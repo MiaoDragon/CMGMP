@@ -89,6 +89,29 @@ void bookshelf(Vector7d& x_start, Vector7d& x_goal, double& goal_thr,
         }
     }
 
+    // print out the surface info
+    int within_limit = 0;
+    int total = 0;
+    for (std::vector<ContactPoint>::iterator it = surface->begin(); it != surface->end(); ) 
+    {
+        // check whether within limit
+        ++it;
+        total += 1;
+        if ((it->p[0] >= -10E-3/2) && (it->p[0] <= 10E-3/2) && 
+            (it->p[1] >= -34E-3/2) && (it->p[1] <= 34E-3/2) && 
+            (it->p[2] >= -34E-3/2) && (it->p[2] <= 34E-3/2))
+        {
+            std::cout << "within limit" << std::endl;
+            within_limit += 1;
+        }
+        else
+        {
+            std::cout << "surface p: " << it->p[0] << ", " << it->p[1] << ", " << it->p[2] << std::endl;
+            std::cout << "surface n: " << it->n[0] << ", " << it->n[1] << ", " << it->n[2] << std::endl;
+        }
+    }
+    std::cout << "within_limit: " << within_limit << "/" << total << std::endl;
+
     x_start<< 0.0, 0.0 ,0.99*17E-3, 0, 0, 0, 1;
     // x_goal<< 0.0, -17E-3, 34E-3 , 0.25881904510252074, 0, 0, 0.965925826289;
     x_goal<< 0.0, -17E-3, 34E-3 ,0.17364817766693033, 0, 0, 0.984807753012208;

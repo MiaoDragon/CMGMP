@@ -8,6 +8,8 @@ set(cmgmp_required_libraries
 
 set(modus_libs modus_common modus_modes)
 
+# FIND_PACKAGE(DART REQUIRED COMPONENTS gui collision-bullet utils utils-urdf)
+
 set(dart_libs dart dart-utils-urdf dart-gui dart-collision-bullet)
 
 add_definitions(-DSRC_DIR="${PROJECT_SOURCE_DIR}")

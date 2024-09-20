@@ -45,9 +45,9 @@ DartWorld::DartWorld()
     // auto fcl_collision = FCLCollisionDetector::create();
     // auto b_collision = DARTCollisionDetector::create();
     
-    // world->getConstraintSolver()->setCollisionDetector(DARTCollisionDetector::create());
+    world->getConstraintSolver()->setCollisionDetector(DARTCollisionDetector::create());
 
-    world->getConstraintSolver()->setCollisionDetector(BulletCollisionDetector::create());
+    // world->getConstraintSolver()->setCollisionDetector(BulletCollisionDetector::create());
 }
 
 void DartWorld::addEnvironmentComponent(const SkeletonPtr& env){

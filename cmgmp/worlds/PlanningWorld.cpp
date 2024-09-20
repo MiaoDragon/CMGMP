@@ -681,6 +681,10 @@ bool PlanningWorld::ForwardIntegration(
         this->world->getObjectContacts(&envs, x_new);
         iter_corr++;
       }
+      if (is_penetrate(envs))
+      {
+        std::cout << "is_penetrating!" << std::endl;
+      }
 
       if (is_penetrate(envs) || (envs.size() != pre_env_size)) {
         // std::cout << "velocity correction failed! "
@@ -698,6 +702,7 @@ bool PlanningWorld::ForwardIntegration(
 
     if (envs.size() > pre_env_size) {
       // Detects new contacts: project the object back to zero contact distance
+      std::cout << "detect new contact!" << std::endl;
       int iter_corr = 0;
       while (iter_corr < 10) {
         VectorXi mode_corr(envs.size());

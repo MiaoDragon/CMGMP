@@ -33,10 +33,10 @@ FrictionConeLinearization::FrictionConeLinearization(int n)
     number_of_sliding_planes = n;
     D.resize(n, Eigen::NoChange);
     D.setZero();
-    D_dual.resize(2*n, Eigen::NoChange);
+    D_dual.resize(2*n, Eigen::NoChange);  // these seem to be normal to Ds. And has two vecs for each hyperplane (one for +, one for -)
     D_dual.setZero();
-    cones.resize(2*2*n, Eigen::NoChange);
-    vectors.resize(2*n, Eigen::NoChange);
+    cones.resize(2*2*n, Eigen::NoChange);  // TODO: what is cones?
+    vectors.resize(2*n, Eigen::NoChange);  // taking the direcitons of D_Dual
     cone_modes.resize(2*n, n);
     vector_modes.resize(2*n, n);
 

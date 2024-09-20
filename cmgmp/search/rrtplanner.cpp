@@ -276,6 +276,7 @@ void RRTPlanner::Extend_QPCC(int near_idx, Vector7d x_rand_) {
     // envs.push_back(T->nodes[near_idx].envs[3]);
     // envs.push_back(T->nodes[near_idx].envs[1]);
 
+
     this->pw->cons->NormalVelocityConstraints(T->nodes[near_idx].envs, &A, &b);
     // this->pw->cons->NormalVelocityConstraints(envs, &A, &b);
     this->pw->cons->TangentVelocityConstraints(T->nodes[near_idx].envs, &D, &d);
@@ -295,6 +296,9 @@ void RRTPlanner::Extend_QPCC(int near_idx, Vector7d x_rand_) {
   Vector6d v_zero = Vector6d::Zero();
   double d_zero =
       dist_vel(v_zero, v_star, T->translation_weight, T->angle_weight);
+
+  std::cout << "number of env contacts: " << T->nodes[near_idx].envs.size() << std::endl;
+  std::cout << "number of cs modes: " << T->nodes[near_idx].modes.size() << std::endl;
   for (const auto &cs_mode : T->nodes[near_idx].modes) {
 
     // std::cout << "cs mode " << cs_mode.transpose() << std::endl;
